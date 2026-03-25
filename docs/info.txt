@@ -12,3 +12,28 @@
 	commit的消息，MQ会正常push给消费者，rollback则会删除消息
 	消费者消费消息，回复ACK
 	如果MQ服务器长时间没有收到commit或者rollback就会反查生产者，根据查询到的结果执行最终状态
+
+
+
+4. RocketMQ info
+启动 nameserver和broker
+-  start mqnamesrv.cmd
+- `Start-Process mqbroker.cmd -ArgumentList "-n 127.0.0.1:9876 autoCreateTopicEnable=true"`
+
+- 看IP/port配置
+	- $env:NAMESRV_ADDR="127.0.0.1:9876"
+	- echo $env:NAMESRV_ADDR
+
+- 更新配置
+	- /mqadmin updateBrokerConfig -blocalhost:10911 -k enablePropertyFilter -v true
+- 查看配置
+	- ./mqbroker -p
+- 指定配置文件加载（用这个config能生效）
+	- `Start-Process mqbroker.cmd -ArgumentList "-n 127.0.0.1:9876 autoCreateTopicEnable=true -c E:\Software\RocketMQ\rocket_mq_4.6.0\rocketmq-all-4.6.0-bin-release\conf\broker.conf"`
+	- mqbroker.cmd -n localhost:9876 -c E:\rocketmq\conf\broker.conf
+- 关闭broker
+	- .\mqshutdown.cmd broker
+- 磁盘空间问题
+    默认是在c盘，可以移到e盘，通过设置storePathRootDir在broker.config里面
+- 遇到thread:AllocateMappedFileService started:false 问题
+broker.config配置只留下storePathRootDir配置，其它文件相关的配置先注释掉，然后重建目录
