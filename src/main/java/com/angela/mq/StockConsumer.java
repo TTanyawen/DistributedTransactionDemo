@@ -13,6 +13,6 @@ public class StockConsumer implements RocketMQListener<String> {
 
     @Override
     public void onMessage(String message) {
-        System.out.println("收到消息：" + message);
+        System.out.println("stock 服务收到消息：" + message);
     }
 }
