@@ -5,3 +5,9 @@ rocketmq:
   name-server: 127.0.0.1:9876
   producer:
     group: order-producer-group
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/forstudy?serverTimezone=Asia/Shanghai
+    username: root
+    password: 2640
+    driver-class-name: com.mysql.cj.jdbc.Driver

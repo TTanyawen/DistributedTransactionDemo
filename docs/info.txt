@@ -37,3 +37,8 @@
     默认是在c盘，可以移到e盘，通过设置storePathRootDir在broker.config里面
 - 遇到thread:AllocateMappedFileService started:false 问题
 broker.config配置只留下storePathRootDir配置，其它文件相关的配置先注释掉，然后重建目录
+
+
+5. TCC
+try-confirm-cancel
+一个ordinater
