@@ -42,3 +42,9 @@ broker.config配置只留下storePathRootDir配置，其它文件相关的配置
 5. TCC
 try-confirm-cancel
 一个ordinater
+
+需要注意：悬挂问题和空回滚问题
+悬挂：cancel比try先执行，try超时没有来，触发了cancel，然后try来了
+    导致数据错乱
+    解决->try和cancel阶段在做update的时候要判断status
+空回滚：cancel了

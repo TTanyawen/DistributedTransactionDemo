@@ -1,7 +1,7 @@
 package com.angela.service;
 
 import com.angela.mq.OrderTransactionProducer;
-import com.angela.tcc.service.StockTccService;
+
 import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +15,7 @@ public class OrderService {
     private RocketMQTemplate rocketMQTemplate;
     @Autowired
     OrderTransactionProducer orderTransactionProducer;
-    @Autowired
-    StockTccService stockClient;
+
 
     /*
         1. 发送半消息
